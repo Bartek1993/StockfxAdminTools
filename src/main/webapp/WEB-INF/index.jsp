@@ -77,7 +77,7 @@
         <div class="row">
            
      <div class="col-sm-3">
-         <a href="WEB-INF/indexUsers.jsp"> <div class="card" style="width: 12rem;">
+         <a href="/indexUsers"> <div class="card" style="width: 12rem;">
   <img class="card-img-top" src="http://simpleicon.com/wp-content/uploads/user1.png" alt="Card image cap"></a>
   <div class="card-body">
      <p class="card-text">Add User</p>
@@ -86,7 +86,7 @@
      </div>
      <div class="col-md-3">
            <div class="card" style="width: 12rem; align-content: center">
-                <a href="indexProducts.jsp">
+                <a href="indexProducts">
   <img class="card-img-top" src="https://slack-files2.s3-us-west-2.amazonaws.com/avatars/2016-05-09/41243011330_1b697a659d3b394fe271_512.png" alt="Card image cap"></a>
   <div class="card-body">
      <p class="card-text">Add Product</p>
@@ -96,7 +96,7 @@
 </div> 
 <div class="col-md-3">
            <div class="card" style="width: 12rem; align-content: center">
-                <a href="indexLocations.jsp">
+                <a href="indexLocations">
   <img class="card-img-top" src="https://images.vexels.com/media/users/3/154655/isolated/preview/71dccbb077597dea55dfc5b7a7af52c4-location-pin-contact-icon-by-vexels.png" alt="Card image cap"></a>
   <div class="card-body">
      <p class="card-text">Add Location</p>
