@@ -24,9 +24,8 @@
 </head>
 
 <title>
-  
+Locations
 </title>
-
 
 <body>
     <div class="container-fluid">
