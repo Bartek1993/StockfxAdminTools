@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RestController {
 
-    @GetMapping(value = "/index")
+    @GetMapping(value ={"/index","/"})
     public String services()
     {
         return "index";
