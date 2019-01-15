@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.util.GregorianCalendar"%>
-<%@ page import = "java.io.*,java.util.*" %>
+<%@page import="java.util.Calendar"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Connection"%>
@@ -24,9 +24,8 @@
 </head>
 
 <title>
-  
+Locations
 </title>
-
 
 <body>
     <div class="container-fluid">
@@ -39,8 +38,9 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="index.jsp">Home<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="indexProducts.jsp">Edit Products</a>
       <a class="nav-item nav-link" href="indexUsers.jsp">Edit Users</a>
-      <a class="nav-item nav-link" href="indexLocations.jsp">Edit Locations</a>
+ 
     </div>
   </div>
  <button type="button" class="btn btn-secondary btn-sm">Sign Out</button>       
@@ -48,7 +48,7 @@
 
 <div class="jumbotron">
 <h1>StockFX Database</h1>
- <h2>Page Accessed</h2>
+<h2>Page Accessed</h2>
          <%
             response.setIntHeader("Page Refreshed", 10);
             
@@ -78,22 +78,22 @@
 <div class="row">
 <div class="col-4">
     <div class="alert alert-warning" role="alert">
- Add new Product
+ Add Location
 </div>
-<form action="productsComplete.jsp">
+<form action="LocationsComplete">
     
 
     <div class="form-group row">
-    <label for="text" class="col-sm-2 col-form-label">Product</label>
+    <label for="text" class="col-sm-2 col-form-label">ID</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputEmail3" name ="productname"  placeholder="Product Name">
+      <input type="text" class="form-control" id="inputEmail3" name ="id"  placeholder="Location ID">
     </div>
   </div>
     <br>
   <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Scan</label>
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name ="scancode"  id="inputPassword3" placeholder="Scan Code">
+      <input type="text" class="form-control" name ="name"  id="inputPassword3" placeholder="Location Name">
     </div>
   </div>
     <br>
@@ -101,15 +101,15 @@
   </fieldset>
   <div class="form-group row">
     <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary" value="register">Add Product</button>
+      <button type="submit" class="btn btn-primary" value="register">Add Location</button>
     </div>
   </div>
 </form>
     <table class="table" name="table">
   <thead>
       <tr>
-      <th scope="col">Product</th>
-      <th scope="col">Scan</th>
+      <th scope="col">Location ID</th>
+      <th scope="col">Location Name</th>
     </tr>
   </thead>
   <tbody>
@@ -121,15 +121,15 @@
         con = DriverManager.getConnection("jdbc:mysql://stockcontrolldb.cv19wxrr0zdu.us-east-2.rds.amazonaws.com/InventoryControllFX?verifyServerCertificate=false&useSSL=false",
                 "bartoszkepke09",
                 "bartoszkepke00099912");
-        String sql = "Select Name,ScanCode from STPFillets";
+        String sql = "Select * from Locations";
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while(rs.next())
         {
             %>
   <tr>
-      <td><%=rs.getString("Name")%></td>
-    <td><%=rs.getString("ScanCode")%></td>
+      <td><%=rs.getString("LocationID")%></td>
+    <td><%=rs.getString("LocationName")%></td>
   </tr>
             
                     <%

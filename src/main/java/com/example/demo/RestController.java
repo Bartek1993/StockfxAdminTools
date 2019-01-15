@@ -27,4 +27,26 @@ public class RestController {
     {
         return "indexLocations";
     }
+    @GetMapping(value = "/indexMain")
+    public String servicesMain()
+    {
+        return "indexMain";
+    }
+
+
+    @GetMapping(value = "/userComplete")
+    public String userComplete()
+    {
+        return "userComplete";
+    }
+    @GetMapping(value = "/productsComplete")
+    public String productsComplete()
+    {
+        return "productsComplete";
+    }
+    @GetMapping(value = "/LocationsComplete")
+    public String LocationsComplete()
+    {
+        return "LocationsComplete";
+    }
 }

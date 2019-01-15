@@ -19,9 +19,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>    
-     <script>
-    alert("Welcome to StockFX administrative tools");
-    </script> 
+   
 </head>
 
 <title>
@@ -30,26 +28,26 @@
 
 
 <body>
-    
+    <div class="container-fluid">
    <nav class="navbar navbar-expand-md navbar-light bg-primary">
   <a class="navbar-brand" href="#"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    
+      
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="indexUsers.jsp">Edit Users <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="index.jsp">Home<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="indexProducts.jsp">Edit Products</a>
-      <a class="nav-item nav-link" href="indexLocations.jsp">Edit Locations</a>
+      <a class="nav-item nav-link" href="indexLocations">Edit Locations</a>
+     
     </div>
   </div>
  <button type="button" class="btn btn-secondary btn-sm">Sign Out</button>       
 </nav>
-    <div class="container-fluid">
-         <div class="jumbotron">
+
+<div class="jumbotron">
 <h1>StockFX Database</h1>
-<p>Administrators WebPage</p>
 <h2>Page Accessed</h2>
          <%
             response.setIntHeader("Page Refreshed", 10);
@@ -74,42 +72,86 @@
          out.println("User IP Address: " + request.getRemoteAddr());
       %>
 </div>
-        <div class="row">
-           
-     <div class="col-sm-3">
-         <a href="/indexUsers"> <div class="card" style="width: 12rem;">
-  <img class="card-img-top" src="http://simpleicon.com/wp-content/uploads/user1.png" alt="Card image cap"></a>
-  <div class="card-body">
-     <p class="card-text">Add User</p>
-  </div>
-</div>
-     </div>
-     <div class="col-md-3">
-           <div class="card" style="width: 12rem; align-content: center">
-                <a href="indexProducts">
-  <img class="card-img-top" src="https://slack-files2.s3-us-west-2.amazonaws.com/avatars/2016-05-09/41243011330_1b697a659d3b394fe271_512.png" alt="Card image cap"></a>
-  <div class="card-body">
-     <p class="card-text">Add Product</p>
-     
-  </div>
-</div>
-</div> 
-<div class="col-md-3">
-           <div class="card" style="width: 12rem; align-content: center">
-                <a href="indexLocations">
-  <img class="card-img-top" src="https://images.vexels.com/media/users/3/154655/isolated/preview/71dccbb077597dea55dfc5b7a7af52c4-location-pin-contact-icon-by-vexels.png" alt="Card image cap"></a>
-  <div class="card-body">
-     <p class="card-text">Add Location</p>
-     <br>
-  </div>
-</div>
-</div>             
-</div>    
-</div>
-</div>
-      
-</div>
 
+</div>
+<br>        
+<div class="row">
+<div class="col-4">
+    <div class="alert alert-warning" role="alert">
+ Add new User
+</div>
+<form action="userComplete">
+    
+
+    <div class="form-group row">
+    <label for="text" class="col-sm-2 col-form-label">ID</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail3" name ="username"  placeholder="Username">
+    </div>
+  </div>
+    <br>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" name ="password"  id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+    <br>
+  <fieldset class="form-group">
+  </fieldset>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary" value="register">Add User</button>
+    </div>
+  </div>
+</form>
+    <table class="table" name="table">
+  <thead>
+      <tr>
+      <th scope="col">LocationID</th>
+      <th scope="col">LocationName</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% 
+          
+    try{
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        Connection con;
+        con = DriverManager.getConnection("jdbc:mysql://stockcontrolldb.cv19wxrr0zdu.us-east-2.rds.amazonaws.com/InventoryControllFX?verifyServerCertificate=false&useSSL=false",
+                "bartoszkepke09",
+                "bartoszkepke00099912");
+        String sql = "Select LocationID,LocationName from Locations";
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        while(rs.next())
+        {
+            %>
+  <tr>
+      <td><%=rs.getString("username")%></td>
+    <td><%=rs.getString("password")%></td>
+  </tr>
+            
+                    <%
+        }
+    
+    } catch(Exception a){
+    
+        System.out.println(a);
+    
+    }
+   
+   
+   
+   %>
+  </tbody>
+</table>
+  <br>
+ 
+</div> 
+</div>        
+</div>
+<footer></footer>
 </body>
 
 
