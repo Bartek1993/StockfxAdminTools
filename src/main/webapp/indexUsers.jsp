@@ -121,7 +121,7 @@
         con = DriverManager.getConnection("jdbc:mysql://stockcontrolldb.cv19wxrr0zdu.us-east-2.rds.amazonaws.com/InventoryControllFX?verifyServerCertificate=false&useSSL=false",
                 "bartoszkepke09",
                 "bartoszkepke00099912");
-        String sql = "Select LocationID,LocationName from Locations";
+        String sql = "Select Username,Password from Locations";
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while(rs.next())
