@@ -90,9 +90,9 @@
 	<distributionManagement>
 		<repository>
 			<uniqueVersion>false</uniqueVersion>
-			<id>bartas1993</id>
-			<name>demoSpringBoot</name>
-			<url>https://github.com/bartas1993/demoSpringBoot.git</url>
+			<id>StockfxAdminTools</id>
+			<name>bartas1993</name>
+			<url>https://github.com/bartas1993/StockfxAdminTools.git</url>
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>
